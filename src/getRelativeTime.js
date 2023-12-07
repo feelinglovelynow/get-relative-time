@@ -1,9 +1,10 @@
 /**
  * Simple function that recieves a `Date` object that is in the future or is in the past and gives back the relative time using `Intl.RelativeTimeFormat('en', { numeric: 'auto' })`
- * Examples: `[ "6 months ago", "4 weeks ago", "7 days ago", "now", "in 1 minute", "tomorrow", "in 3 days", "in 4 weeks", "next month", "in 2 months", "in 12 months", "next year" ]`
+ * Examples: `[ "last year", "6 months ago", "4 weeks ago", "7 days ago", "now", "in 1 minute", "in 6 hours", "tomorrow", "in 3 days", "in 4 weeks", "next month", "in 2 months", "in 12 months", "next year" ]`
  * @param { Date } date 
+ * @throws { { id: 'fln__get-relative-time__invalid-date', message: 'Please pass getRelativeTime() a valid date object', _errorData: { date } } } - `IF (!(date instanceof Date) || date.toString() === 'Invalid Date')`
  * @returns { string }
- */
+*/
 export function getRelativeTime (date) {
   if (!(date instanceof Date) || date.toString() === 'Invalid Date') throw { id: 'fln__get-relative-time__invalid-date', message: 'Please pass getRelativeTime() a valid date object', _errorData: { date } }
   else {
