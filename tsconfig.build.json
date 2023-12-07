@@ -1,18 +1,20 @@
 {
   "files": [
-    "src/__tests__/getRelativeTime.test.js",
     "src/getRelativeTime.js",
     "src/index.js"
   ],
   "compilerOptions": {
-    "noEmit": true,
     "allowJs": true,
     "checkJs": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
+    "sourceMap": true,
+    "declaration": true,
     "strict": true,
+    "outDir": "tsc",
+    "declarationMap": true,
     "module": "NodeNext",
-    "target": "ES2020"
+    "target": "ES2020",
   }
 }

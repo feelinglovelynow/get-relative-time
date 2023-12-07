@@ -7,6 +7,10 @@ pnpm add @feelinglovelynow/get-relative-time
 ```
 
 
+## 🤓 Unit Tests
+![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg?style=flat)
+
+
 ## 🙏 Description
 * Simple function that recieves a `Date` object that is in the future or is in the past and gives back the relative time using `Intl.RelativeTimeFormat('en', { numeric: 'auto' })`
 * Examples: `[ "6 months ago", "4 weeks ago", "7 days ago", "now", "in 1 minute", "tomorrow", "in 3 days", "in 4 weeks", "next month", "in 2 months", "in 12 months", "next year" ]`
@@ -17,16 +21,24 @@ pnpm add @feelinglovelynow/get-relative-time
 import { getRelativeTime } from '@feelinglovelynow/get-relative-time'
 
 const d1 = new Date()
-getRelativeTime(d1.setDate(d1.getDate() - 180)) // 6 months ago
+d1.setDate(d1.getDate() - 450)
+getRelativeTime(d1) // last year
 
 const d2 = new Date()
-getRelativeTime(d2.setDate(d2.getDate() - 30)) // 4 weeks ago
+d2.setDate(d2.getDate() - 180)
+getRelativeTime(d2) // 6 months ago
 
 const d3 = new Date()
-getRelativeTime(d3.setDate(d3.getDate() - 7)) // 7 days ago
+d3.setDate(d3.getDate() - 30)
+getRelativeTime(d3) // 4 weeks ago
+
+const d4 = new Date()
+d4.setDate(d4.getDate() - 7)
+getRelativeTime(d4) // 7 days ago
 
 getRelativeTime(new Date()) // now
 getRelativeTime(new Date((new Date()).getTime() + 60000)) // in 1 minute
+getRelativeTime(new Date((new Date()).getTime() + 360 * 60000)) // in 6 hours
 getRelativeTime(new Date((new Date()).getTime() + (1440 * 60000))) // tomorrow
 getRelativeTime(new Date((new Date()).getTime() + (3 * 1440 * 60000))) // in 3 days
 getRelativeTime(new Date((new Date()).getTime() + (28 * 1440 * 60000))) // in 4 weeks
@@ -39,7 +51,7 @@ getRelativeTime(new Date((new Date()).getTime() + (400 * 1440 * 60000))) // next
 ## 🔥 Errors we may throw
 * `getRelativeTime()`
 ```ts
-if (!(date instanceof Date)) throw { id: 'fln__get-relative-time__invalid-date', message: 'Please pass getRelativeTime() a date object', _errorData: { date } }
+if (!(date instanceof Date) || date.toString() === 'Invalid Date') throw { id: 'fln__get-relative-time__invalid-date', message: 'Please pass getRelativeTime() a valid date object', _errorData: { date } }
 ```
 
 

@@ -5,7 +5,7 @@
  * @returns { string }
  */
 export function getRelativeTime (date) {
-  if (!(date instanceof Date)) throw { id: 'fln__get-relative-time__invalid-date', message: 'Please pass toInputValue() a date object', _errorData: { date } }
+  if (!(date instanceof Date) || date.toString() === 'Invalid Date') throw { id: 'fln__get-relative-time__invalid-date', message: 'Please pass getRelativeTime() a valid date object', _errorData: { date } }
   else {
     /** @type { string } */
     let response
